@@ -1,3 +1,4 @@
+import './style.css'
 import * as THREE from 'three'
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 import {VRButton} from 'three/addons/webxr/VRButton.js'
@@ -34,7 +35,7 @@ animate()
 
 function init() {
   container = document.createElement('div')
-  document.body.appendChild(container)
+  document.getElementById('app').appendChild(container)
 
   scene = new THREE.Scene()
   scene.background = new THREE.Color(0x444444)
@@ -208,6 +209,7 @@ function collideObject(indexTip) {
   return null
 }
 
+// audio
 async function setupMediaRecorder() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({audio: true})
@@ -222,11 +224,9 @@ async function setupMediaRecorder() {
       console.log('Audio blob:', audioBlob)
       const audioUrl = URL.createObjectURL(audioBlob)
 
-      // Assuming you have an <audio> element with id="recordedAudio"
       const audioElement = document.getElementById('audioPlayer')
       audioElement.src = audioUrl
 
-      // Clear the audio chunks array for the next recording
       audioChunks = []
     }
   } catch (error) {
@@ -272,6 +272,8 @@ function onPinchEndRight(event) {
   scaling.active = false
 }
 
+setupMediaRecorder()
+
 //
 
 function animate() {
@@ -289,6 +291,3 @@ function render() {
   }
   renderer.render(scene, camera)
 }
-
-// Initial setup for media recorder
-setupMediaRecorder()

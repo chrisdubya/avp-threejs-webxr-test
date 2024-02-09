@@ -4,11 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>WebXR Audio Test</title>
   </head>
   <body>
     <div id="app">
-      <audio id="audioPlayer" controls></audio>
+      <div class="audio-container">
+        <audio id="audioPlayer" controls></audio>
+      </div>
+      <div class="instructions-container">
+        <h2>Instructions</h2>
+        <ul>
+          <li>Click the WebXR button to enter XR</li>
+          <li>Use your left hand to pinch and spawn a cube</li>
+          <li>Use your right hand to pinch and start recording, release pinch to stop</li>
+          <li>Exit WebXR, play the recording from the HTML Audio Player</li>
+        </ul>
+      </div>
     </div>
     <script type="module" src="/main.js"></script>
   </body>
